@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _pickFile() async {
     String? filePath = await FilePicker.platform
-        .pickFiles(type: FileType.image, allowMultiple: true)
+        .pickFiles(type: FileType.video, allowMultiple: false)
         .then((result) => result?.files.single.path);
 
     if (filePath != null) {

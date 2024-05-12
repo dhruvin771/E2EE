@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:aes_crypt_null_safe/aes_crypt_null_safe.dart';
+import 'package:open_file_plus/open_file_plus.dart';
 
 class EncryptData {
   static String encrypt_file(String path) {
@@ -14,13 +15,7 @@ class EncryptData {
       print('Encrypted file: $encFilepath');
       decrypt_file(encFilepath);
     } catch (e) {
-      /* if (e.type == AesCryptExceptionType.destFileExists) {
-        print('The encryption has been completed unsuccessfully.');
-        print(e.message);
-      }
-      else{
-        return 'ERROR';
-      }*/
+      print(e);
     }
     return "encFilepath";
   }
@@ -35,15 +30,9 @@ class EncryptData {
       print('The decryption has been completed successfully.');
       print('Decrypted file 1: $decFilepath');
       print('File content: ' + File(decFilepath).path);
+      OpenFile.open(File(decFilepath).path);
     } catch (e) {
-      /*if (e.type == AesCryptExceptionType.destFileExists) {
-        print('The decryption has been completed unsuccessfully.');
-        print(e.message);
-      }
-      else{
-        return 'ERROR';
-      }*/
-      print("e");
+      print(e);
     }
     return "0";
   }
