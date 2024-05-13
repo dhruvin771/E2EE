@@ -19,7 +19,7 @@ String decryptedFile = EncryptData.decrypt_file(encryptedFile);
 ```
 Based on the provided code, it seems you're using AES encryption for file encryption and decryption. Here's a description of how this code implements end-to-end encryption (E2EE) and how you can structure it for GitHub:
 
-### Description of E2EE Implementation:
+**Description:**
 
 1. **AES Encryption**: The code uses AES encryption to encrypt and decrypt files. AES (Advanced Encryption Standard) is a symmetric encryption algorithm widely used for securing sensitive data.
 
