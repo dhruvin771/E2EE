@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'End To End Encryption'),
     );
   }
 }
@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,24 +43,14 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              'Smiley',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+        child: _isLoading
+            ? const CircularProgressIndicator()
+            : const Text('Pick the file'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _pickFile,
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 
@@ -69,10 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (filePath != null) {
       setState(() {
-        var encrypted_file_path = EncryptData.encrypt_file(filePath);
-        print(encrypted_file_path);
-        String fileName = filePath.split('/').last;
-        print(fileName);
+        _isLoading = true;
+      });
+
+      await EncryptData.encryptFile(filePath);
+
+      setState(() {
+        _isLoading = false;
       });
     }
   }
