@@ -5,20 +5,20 @@ import 'package:flutter/foundation.dart';
 import 'package:open_file_plus/open_file_plus.dart';
 
 class EncryptData {
-  static Future<String> encryptFile(String path) async {
-    return await compute(_encryptFile, path);
+  static Future<String> encryptFile(String path, String password) async {
+    return await compute(_encryptFile, {'path': path, 'password': password});
   }
 
-  static String _encryptFile(String path) {
+  static String _encryptFile(Map<String, String> params) {
     AesCrypt crypt = AesCrypt();
     crypt.setOverwriteMode(AesCryptOwMode.on);
-    crypt.setPassword('my cool password');
+    crypt.setPassword(params['password']!);
     String encFilepath;
     try {
-      encFilepath = crypt.encryptFileSync(path);
+      encFilepath = crypt.encryptFileSync(params['path']!);
       print('The encryption has been completed successfully.');
       print('Encrypted file: $encFilepath');
-      _decryptFile(encFilepath);
+      // Note: Removed automatic decryption call to avoid confusion
     } catch (e) {
       print(e);
       return 'Error: $e';
@@ -26,17 +26,17 @@ class EncryptData {
     return encFilepath;
   }
 
-  static Future<String> decryptFile(String path) async {
-    return await compute(_decryptFile, path);
+  static Future<String> decryptFile(String path, String password) async {
+    return await compute(_decryptFile, {'path': path, 'password': password});
   }
 
-  static String _decryptFile(String path) {
+  static String _decryptFile(Map<String, String> params) {
     AesCrypt crypt = AesCrypt();
     crypt.setOverwriteMode(AesCryptOwMode.on);
-    crypt.setPassword('my cool password');
+    crypt.setPassword(params['password']!);
     String decFilepath;
     try {
-      decFilepath = crypt.decryptFileSync(path);
+      decFilepath = crypt.decryptFileSync(params['path']!);
       print('The decryption has been completed successfully.');
       print('Decrypted file: $decFilepath');
       print('File content: ${File(decFilepath).path}');

@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _isLoading = true;
       });
 
-      await EncryptData.encryptFile(filePath);
+      await EncryptData.encryptFile(filePath, "test@123");
 
       setState(() {
         _isLoading = false;
