@@ -18,7 +18,6 @@ class EncryptData {
       encFilepath = crypt.encryptFileSync(params['path']!);
       print('The encryption has been completed successfully.');
       print('Encrypted file: $encFilepath');
-      // Note: Removed automatic decryption call to avoid confusion
     } catch (e) {
       print(e);
       return 'Error: $e';
@@ -39,7 +38,6 @@ class EncryptData {
       decFilepath = crypt.decryptFileSync(params['path']!);
       print('The decryption has been completed successfully.');
       print('Decrypted file: $decFilepath');
-      print('File content: ${File(decFilepath).path}');
       OpenFile.open(File(decFilepath).path);
     } catch (e) {
       print(e);

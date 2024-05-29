@@ -1,13 +1,13 @@
-## End-to-End Encryption (E2EE) using AES
+## End-to-End Encryption (E2EE) using AES & RSA
 
-This repository contains code for implementing end-to-end encryption (E2EE) for files using AES (Advanced Encryption Standard) in both Dart and Python.
+This repository contains code for implementing end-to-end encryption (E2EE) for files using both AES (Advanced Encryption Standard) and RSA (Rivest–Shamir–Adleman) encryption algorithms in both Dart and Python.
 
 ### Features:
 - **AES Encryption:** Uses AES encryption algorithm for secure file encryption.
 - **Password Protection:** Encrypts and decrypts files with a user-defined password.
 - **Synchronous Operations:** Performs encryption and decryption operations synchronously for simplicity.
 
-### Dart Implementation
+### Dart AES Implementation
 
 #### Usage:
 1. Import the `aes_crypt_null_safe` and `open_file_plus` packages.
@@ -25,6 +25,13 @@ String decryptedFile = await EncryptData.decryptFile(encryptedFile, password);
 2. **Encryption Method:** Encrypts a file with a specified path and password.
 3. **Decryption Method:** Decrypts an encrypted file using the same password.
 4. **File Handling:** Prints status messages and opens decrypted files using `OpenFile.open`.
+
+### Dart RSA Implementation
+
+#### Description:
+- **RSA Key Generation:** Generates RSA key pairs asynchronously.
+- **JWK Conversion:** Converts JSON Web Keys (JWK) to RSA private and public key strings asynchronously.
+- **Encryption with Public Key:** Encrypts a message with a public key asynchronously.
 
 ### Python Implementation
 
