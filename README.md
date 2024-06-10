@@ -7,7 +7,7 @@ This repository contains code for implementing end-to-end encryption (E2EE) for 
 - **Password Protection:** Encrypts and decrypts files with a user-defined password.
 - **Synchronous Operations:** Performs encryption and decryption operations synchronously for simplicity.
 
-### Dart AES Implementation
+### Dart AES Implementation(Client Side)
 
 #### Usage:
 1. Import the `aes_crypt_null_safe` and `open_file_plus` packages.
@@ -26,14 +26,14 @@ String decryptedFile = await EncryptData.decryptFile(encryptedFile, password);
 3. **Decryption Method:** Decrypts an encrypted file using the same password.
 4. **File Handling:** Prints status messages and opens decrypted files using `OpenFile.open`.
 
-### Dart RSA Implementation
+### Dart RSA Implementation(Client Side)
 
 #### Description:
 - **RSA Key Generation:** Generates RSA key pairs asynchronously.
 - **JWK Conversion:** Converts JSON Web Keys (JWK) to RSA private and public key strings asynchronously.
 - **Encryption with Public Key:** Encrypts a message with a public key asynchronously.
 
-### Python Implementation
+### Python Implementation(Server Side)
 
 #### Usage:
 1. Install the `pyAesCrypt` package using `pip install pyAesCrypt`.
